@@ -7,6 +7,11 @@ namespace Core
         public string Name { get; set; }
         public Birthday Birthday { get; set; }
 
+        public override int GetHashCode()
+        {
+            return ToString().GetHashCode();
+        }
+
         public override string ToString()
         {
             return string.Format("{0} ({1:MMM} {1:dd})", Name, new DateTime(2000, Birthday.Month, Birthday.Day));
