@@ -16,7 +16,7 @@ namespace Core
             _inPlay = new List<Person>(people);
             _offLimits = new Queue<Person>(offLimits ?? new Person[0]);
 
-            _maxNotInPlay = _inPlay.Count / 2;
+            _maxNotInPlay = (int)(_inPlay.Count / 1.25m);
         }
 
         public Person Next(Person receiver)
