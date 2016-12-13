@@ -10,7 +10,7 @@ namespace Tests
         public void should_run()
         {
             var personSource = new PersonSource(SampleData.People);
-            var matcher = new Matcher(personSource, new Person[0]);
+            var matcher = new Matcher(personSource, new OffLimitsSource(new Person[0], SampleData.People.Length));
 
             for (int i = 0; i < 250; i++)
             {

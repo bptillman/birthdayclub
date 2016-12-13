@@ -40,7 +40,6 @@
     <Compile Include="Birthday.cs" />
     <Compile Include="BirthdayOrder.cs" />
     <Compile Include="Gift.cs" />
-    <Compile Include="Givers.cs" />
     <Compile Include="Headspring\SystemClock.cs" />
     <Compile Include="OffLimitsSource.cs" />
     <Compile Include="PersonSource.cs" />

@@ -33,11 +33,12 @@
             using (SystemClock.Stub(checkDate))
             {
                 var personSource = new PersonSource(allPeople.GetPeople());
-                var limitsPeople = offLimitsPeople.GetPeople();
-                var matcher = new Matcher(personSource, limitsPeople);
+                var offLimitSource = new OffLimitsSource(offLimitsPeople.GetPeople(),
+                    personSource.GetAllPeople().Length);
+
+                var matcher = new Matcher(personSource, offLimitSource);
 
                 results.Save(matcher.Next());
-
                 offLimitsPeople.Save(matcher.GetOffLimits());
             }
         }

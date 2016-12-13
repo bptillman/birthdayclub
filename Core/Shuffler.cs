@@ -5,7 +5,7 @@ namespace Core
 
     internal class Shuffler
     {
-        internal void Shuffle<T>(IList<T> array)
+        internal static void Shuffle<T>(IList<T> array)
         {
             var random = new Random();
             var n = array.Count;
