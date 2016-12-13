@@ -42,10 +42,10 @@
     <Compile Include="Gift.cs" />
     <Compile Include="Givers.cs" />
     <Compile Include="Headspring\SystemClock.cs" />
+    <Compile Include="OffLimitsSource.cs" />
     <Compile Include="PersonSource.cs" />
     <Compile Include="Matcher.cs" />
     <Compile Include="Person.cs" />
-    <Compile Include="PersonComparer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shuffler.cs" />
   </ItemGroup>
