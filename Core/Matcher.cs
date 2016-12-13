@@ -1,19 +1,21 @@
+using Headspring;
+
 namespace Core
 {
     public class Matcher
     {
-        private readonly Receivers _receivers;
+        private readonly Person[] _people;
         private readonly Givers _givers;
 
         public Matcher(Person[] people, Person[] offLimitsPeople)
         {
-            _receivers = new Receivers(people);
+            _people = people;
             _givers = new Givers(people, offLimitsPeople);
         }
 
         public Gift Next()
         {
-            var receiver = _receivers.Next();
+            var receiver = Receivers.NextRecipient(SystemClock.UtcNow, _people);
             return new Gift(receiver, _givers.Next(receiver));
         }
 
