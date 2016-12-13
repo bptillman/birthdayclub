@@ -7,7 +7,8 @@
     {
         public void should_run()
         {
-            var matcher = new Matcher(SampleData.People, new Person[0]);
+            var personSource = new PersonSource(SampleData.People);
+            var matcher = new Matcher(personSource, new Person[0]);
 
             for (int i = 0; i < 250; i++)
             {

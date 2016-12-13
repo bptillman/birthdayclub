@@ -4,19 +4,20 @@ namespace Core
 {
     public class Matcher
     {
-        private readonly Person[] _people;
+        private readonly PersonSource _personSource;
         private readonly Givers _givers;
 
-        public Matcher(Person[] people, Person[] offLimitsPeople)
+        public Matcher(PersonSource personSource, Person[] offLimitsPeople)
         {
-            _people = people;
-            _givers = new Givers(people, offLimitsPeople);
+            _personSource = personSource;
+            _givers = new Givers(personSource.GetAllPeople(), offLimitsPeople);
         }
 
         public Gift Next()
         {
-            var receiver = Receivers.NextRecipient(SystemClock.UtcNow, _people);
-            return new Gift(receiver, _givers.Next(receiver));
+            var receiver = _personSource.GetNextRecipient(SystemClock.UtcNow);
+            var giver = _givers.Next(receiver);
+            return new Gift(receiver, giver);
         }
 
         public Person[] GetOffLimits()

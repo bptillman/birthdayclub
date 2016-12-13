@@ -48,7 +48,7 @@
     <Compile Include="BirthdayTests.cs" />
     <Compile Include="GiftTests.cs" />
     <Compile Include="MatcherTests.cs" />
-    <Compile Include="ReceiversTests.cs" />
+    <Compile Include="PersonSourceTests.cs" />
     <Compile Include="SampleData.cs" />
   </ItemGroup>
   <ItemGroup>
