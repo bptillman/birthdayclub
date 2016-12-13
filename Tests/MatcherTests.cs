@@ -1,4 +1,6 @@
-﻿namespace Tests
+﻿using Headspring;
+
+namespace Tests
 {
     using System;
     using Core;
@@ -12,7 +14,10 @@
 
             for (int i = 0; i < 250; i++)
             {
-                Console.WriteLine(matcher.Next());
+                using (SystemClock.Stub(DateTime.Now.AddMonths(i)))
+                {
+                    Console.WriteLine(matcher.Next());
+                }
             }
         }
     }
