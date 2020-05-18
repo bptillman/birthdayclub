@@ -50,6 +50,7 @@
     <Compile Include="MatcherTests.cs" />
     <Compile Include="PersonSourceTests.cs" />
     <Compile Include="SampleData.cs" />
+    <Compile Include="TestingConvention.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
