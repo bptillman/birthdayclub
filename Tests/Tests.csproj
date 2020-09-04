@@ -15,5 +15,6 @@
     <PackageReference Include="Shouldly">
       <Version>3.0.1</Version>
     </PackageReference>
+    <DotNetCliToolReference Include="Fixie.Console" Version="2.2.0" />
   </ItemGroup>
 </Project>
