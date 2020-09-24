@@ -2,18 +2,32 @@
 {
     using Fixie;
 
-    public class TestingConvention : Convention
+    public class TestingConvention : Discovery, Execution
     {
         public TestingConvention()
         {
             Classes
-                .NameEndsWith("Tests");
+                .Where(x => x.Name.EndsWith("Tests"));
 
             Methods
                 .Where(method => method.IsVoid() || method.IsAsync());
+        }
 
-            ClassExecution
-                .CreateInstancePerCase();
+        public void Execute(TestClass testClass)
+        {
+            testClass.RunCases(@case =>
+            {
+                var instance = testClass.Construct();
+
+                SetUp(instance);
+
+                @case.Execute(instance);
+            });
+        }
+
+        static void SetUp(object instance)
+        {
+            instance.GetType().GetMethod("SetUp")?.Execute(instance);
         }
     }
 }
