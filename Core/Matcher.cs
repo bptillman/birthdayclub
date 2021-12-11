@@ -22,8 +22,9 @@ namespace Core
 
             // grab people not on the off limits list
             var possibleGivers = _personSource.GetAllPeople()
-                .Where(x => !_offLimits.IsPersonInList(x))
-                .ToList();
+                .Where(x => !_offLimits.IsPersonInList(x) &&
+                            !_resultsSource.GetAllResults().Where(x => x.Receiver == receiver.Name)
+                                .Select(y => y.Gifter).Contains(x.Name)).ToList();
 
             // shuffle them
             Shuffler.Shuffle(possibleGivers);
