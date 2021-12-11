@@ -7,11 +7,13 @@ namespace Core
     {
         private readonly PersonSource _personSource;
         private readonly OffLimitsSource _offLimits;
+        private readonly ResultsSource _resultsSource;
 
-        public Matcher(PersonSource personSource, OffLimitsSource offLimits)
+        public Matcher(PersonSource personSource, OffLimitsSource offLimits, ResultsSource resultsSource)
         {
             _personSource = personSource;
             _offLimits = offLimits;
+            _resultsSource = resultsSource;
         }
 
         public Gift Next()

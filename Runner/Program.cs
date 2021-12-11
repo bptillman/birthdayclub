@@ -35,8 +35,9 @@
                 var personSource = new PersonSource(allPeople.GetPeople());
                 var offLimitSource = new OffLimitsSource(offLimitsPeople.GetPeople(),
                     personSource.GetAllPeople().Length);
+                var resultsSource = new ResultsSource(results.GetResults());
 
-                var matcher = new Matcher(personSource, offLimitSource);
+                var matcher = new Matcher(personSource, offLimitSource, resultsSource);
 
                 results.Save(matcher.Next());
                 offLimitsPeople.Save(matcher.GetOffLimits());
