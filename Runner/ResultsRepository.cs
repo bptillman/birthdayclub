@@ -10,6 +10,7 @@ namespace Runner
     {
         private readonly string _fileName;
         private readonly IEnumerable<Birthday> _birthdays;
+        private readonly IEnumerable<Result> _results;
 
         public ResultsRepository(string fileName)
         {
@@ -17,6 +18,14 @@ namespace Runner
             _birthdays = File.ReadAllLines(_fileName)
                 .Select(x => x.Split(new [] { ',', '/' }))
                 .Select(x => new Birthday(int.Parse(x[0].Trim()), int.Parse(x[1].Trim())));
+            _results = File.ReadAllLines(_fileName)
+                .Select(x => x.Split(new[] {','}))
+                .Select(x => new Result(
+                    new Birthday(
+                        int.Parse(x[0].Split(new[] {'/'})[0]), 
+                        int.Parse(x[0].Split(new[] {'/'})[1])),
+                    x[1],
+                    x[2]));
         }
 
         public Birthday NextBirthday()
@@ -26,6 +35,11 @@ namespace Runner
 
             var lastBirthday = _birthdays.Last();
             return lastBirthday;
+        }
+
+        public Result[] GetResults()
+        {
+            return _results.ToArray();
         }
 
         public void Save(Gift gift)
