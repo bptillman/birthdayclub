@@ -17,7 +17,7 @@ namespace Tests
             {
                 using (SystemClock.Stub(DateTime.Now.AddMonths(i)))
                 {
-                    Console.WriteLine(matcher.Next());
+                    Should.NotThrow(() => matcher.Next());
                 }
             }
         }
