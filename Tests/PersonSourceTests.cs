@@ -13,5 +13,22 @@
 
             source.GetNextRecipient(today).Name.ShouldBe("Iris");
         }
+
+        public void given_a_duplicate_birthday_should_not_skip_the_duplicate()
+        {
+            var source = new PersonSource(SampleData.PeopleWithDupeBirthday,
+                new[] {new Result(new Birthday(8, 1), "Anita", "Henry")});
+            var next = source.GetNextRecipient2(new DateTime(2000, 8, 10));
+            next.Name.ShouldBe("Iris");
+
+            source = new PersonSource(SampleData.PeopleWithDupeBirthday,
+                new[]
+                {
+                    new Result(new Birthday(8, 1), "Anita", "Henry"),
+                    new Result(new Birthday(9, 1), "Larry", "Iris")
+                });
+            var nextNext = source.GetNextRecipient2(new DateTime(2000, 8, 10));
+            nextNext.Name.ShouldBe("Chris");
+        }
     }
 }

@@ -1,3 +1,5 @@
+using System.Linq;
+
 namespace Tests
 {
     using Core;
@@ -20,9 +22,9 @@ namespace Tests
                 new Person { Name = "Larry", Birthday = new Birthday(12, 1) },
             };
 
-        public static Person[] People
-        {
-            get { return _people; }
-        }
+        public static Person[] People => _people;
+
+        public static Person[] PeopleWithDupeBirthday =>
+            _people.Append(new Person {Name = "Chris", Birthday = new Birthday(9, 1)}).ToArray();
     }
 }
