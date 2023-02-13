@@ -28,7 +28,7 @@ namespace Runner
                     x[2]));
         }
 
-        public Birthday NextBirthday()
+        public Birthday LastBirthday()
         {
             if (!_birthdays.Any())
                 return new Birthday(SystemClock.UtcNow.Month, SystemClock.UtcNow.Day);

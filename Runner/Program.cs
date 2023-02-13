@@ -27,8 +27,8 @@
                 }
             }.Parse(args);
 
-            var nextBirthday = results.NextBirthday();
-            var checkDate = new DateTime(DateTime.Now.Year, nextBirthday.Month, nextBirthday.Day).AddDays(1).AddSeconds(-1); // meh
+            var lastBirthday = results.LastBirthday();
+            var checkDate = new DateTime(DateTime.Now.Year, lastBirthday.Month, lastBirthday.Day).AddDays(1).AddSeconds(-1); // meh
 
             using (SystemClock.Stub(checkDate))
             {
